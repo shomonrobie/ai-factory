@@ -6,7 +6,11 @@ from .api.v1 import router as api_v1_router
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-app = FastAPI(title="AI Software Factory", version="1.3.0")
+app = FastAPI(
+    title="AI Software Factory",
+    version="1.4.0",
+    description="Self-Improving AI-Powered Software Engineering Factory"
+)
 
 app.add_middleware(
     CORSMiddleware,
@@ -20,20 +24,17 @@ app.include_router(api_v1_router, prefix="/api/v1")
 
 @app.get("/health")
 async def health_check():
-    logger.info("Health check called - v1.3")
-    return {"status": "healthy", "version": "1.3.0"}
+    return {"status": "healthy", "version": "1.4.0"}
 
 @app.get("/")
 async def root():
     return {
         "message": "AI Software Factory API",
-        "version": "1.3.0",
-        "endpoints": [
-            "/health",
-            "/api/v1/batches/",
-            "/api/v1/projects/",
-            "/api/v1/agents/",
-            "/api/v1/orchestration/plan",
-            "/api/v1/orchestration/orchestrate"
+        "version": "1.4.0",
+        "features": [
+            "Multi-Agent Orchestration",
+            "Self-Improving System",
+            "Evolution Engine",
+            "Pattern Memory"
         ]
     }
