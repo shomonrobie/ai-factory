@@ -1,0 +1,15 @@
+﻿services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+    ports:
+      - "4001:4001"
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.frontend
+    ports:
+      - "4000:80"
+    depends_on:
+      - backend

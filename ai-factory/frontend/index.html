@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Software Factory</title>
+    <style>
+        body { font-family: Arial; margin: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .container { max-width: 1200px; margin: auto; background: white; border-radius: 10px; padding: 20px; }
+        h1 { color: #667eea; }
+        button { background: #667eea; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+        textarea { width: 100%; padding: 10px; margin: 10px 0; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .healthy { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ðŸ¤– AI Software Factory</h1>
+        <div id="status" class="status">Checking backend...</div>
+        <h2>Create Batch</h2>
+        <input type="number" id="batchNum" value="1">
+        <textarea id="prompt" rows="4" placeholder="Describe your app..."></textarea>
+        <button onclick="createBatch()">Create Batch</button>
+        <h2>Batches</h2>
+        <div id="batches"></div>
+    </div>
+    <script>
+        const API_URL = 'http://localhost:4001';
+        async function checkHealth() {
+            try {
+                const res = await fetch(API_URL + '/health');
+                if (res.ok) {
+                    document.getElementById('status').innerHTML = 'âœ… Backend connected';
+                    document.getElementById('status').className = 'status healthy';
+                }
+            } catch(e) {
+                document.getElementById('status').innerHTML = 'âŒ Backend not available';
+                document.getElementById('status').className = 'status error';
+            }
+        }
+        async function loadBatches() {
+            try {
+                const res = await fetch(API_URL + '/api/v1/batches/');
+                const data = await res.json();
+                document.getElementById('batches').innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            } catch(e) {
+                document.getElementById('batches').innerHTML = 'Error loading batches';
+            }
+        }
+        async function createBatch() {
+            const batchNum = document.getElementById('batchNum').value;
+            const prompt = document.getElementById('prompt').value;
+            const res = await fetch(API_URL + '/api/v1/batches/', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({batch_number: parseInt(batchNum), prompt: prompt})
+            });
+            const data = await res.json();
+            alert('Batch created: ' + JSON.stringify(data));
+            loadBatches();
+        }
+        checkHealth();
+        loadBatches();
+        setInterval(loadBatches, 5000);
+    </script>
+</body>
+</html>
