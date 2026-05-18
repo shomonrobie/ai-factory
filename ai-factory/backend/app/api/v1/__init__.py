@@ -4,6 +4,7 @@ from .projects import router as projects_router
 from .agents import router as agents_router
 from .orchestration import router as orchestration_router
 from .evolution import router as evolution_router
+from .cicd import router as cicd_router
 
 router = APIRouter()
 router.include_router(batches_router, prefix="/batches", tags=["batches"])
@@ -11,3 +12,4 @@ router.include_router(projects_router, prefix="/projects", tags=["projects"])
 router.include_router(agents_router, prefix="/agents", tags=["agents"])
 router.include_router(orchestration_router, prefix="/orchestration", tags=["orchestration"])
 router.include_router(evolution_router, prefix="/evolution", tags=["evolution"])
+router.include_router(cicd_router, prefix="/cicd", tags=["cicd"])

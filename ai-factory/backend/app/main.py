@@ -8,8 +8,8 @@ logger = logging.getLogger(__name__)
 
 app = FastAPI(
     title="AI Software Factory",
-    version="1.4.0",
-    description="Self-Improving AI-Powered Software Engineering Factory"
+    version="1.5.0",
+    description="Enterprise-grade AI-powered software engineering factory with CI/CD"
 )
 
 app.add_middleware(
@@ -24,17 +24,12 @@ app.include_router(api_v1_router, prefix="/api/v1")
 
 @app.get("/health")
 async def health_check():
-    return {"status": "healthy", "version": "1.4.0"}
+    return {"status": "healthy", "version": "1.5.0"}
 
 @app.get("/")
 async def root():
     return {
         "message": "AI Software Factory API",
-        "version": "1.4.0",
-        "features": [
-            "Multi-Agent Orchestration",
-            "Self-Improving System",
-            "Evolution Engine",
-            "Pattern Memory"
-        ]
+        "version": "1.5.0",
+        "features": ["Multi-Agent Orchestration", "Self-Improving System", "CI/CD Pipeline"]
     }
