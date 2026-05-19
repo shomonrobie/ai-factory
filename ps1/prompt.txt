@@ -1,0 +1,142 @@
+You are continuing development of a standalone commercial SaaS product.
+
+PRODUCT NAME:
+FactoryOS AI
+
+TAGLINE:
+The Autonomous AI Software Engineering Platform
+
+PRODUCT PURPOSE:
+FactoryOS AI is a multi-agent AI platform that plans, generates, validates, tests, fixes, and continuously improves production-grade software using batch-driven execution and CI orchestration.
+
+IMPORTANT:
+This product is independent and not part of LakshmiFX QuantAnalytics.
+
+====================================================
+PHASE 1 — PRODUCTIZATION & GO-TO-MARKET
+====================================================
+
+Generate all components required to turn the existing AI Software Factory (v1–v5) into a fully commercial SaaS platform.
+
+1. BRANDING
+- Logo concept
+- Brand guidelines
+- Color palette
+- Typography
+- Favicon assets
+- Social media graphics
+
+2. DOCUMENTATION
+- Product Requirements Document (PRD)
+- Executive Summary
+- Technical Architecture
+- User Guide
+- Developer Guide
+- Deployment Guide
+- Security Whitepaper
+- Pricing Documentation
+- FAQ
+
+3. LANDING PAGE
+- High-converting SaaS marketing website
+- CMS-driven content
+- SEO optimization
+- Blog and documentation integration
+- Demo booking forms
+
+4. CMS
+- Pages, blog, docs, FAQs, testimonials, case studies
+- Rich text editor
+- SEO metadata
+- Multilingual content support
+
+5. BILLING
+- Stripe integration
+- Free, Pro, Enterprise plans
+- Feature gating
+- Trial system
+- Coupon support
+
+6. MULTILINGUAL SUPPORT
+- English-first implementation
+- Internationalization architecture
+- Translation management system
+
+7. DEMO DATA
+- Seed users
+- Sample projects
+- Example batch prompts
+- Example generated applications
+
+8. INVESTOR MATERIALS
+- Pitch deck content
+- Financial projections
+- Competitive analysis
+
+====================================================
+PHASE 2 — PRO FEATURE SYSTEM
+====================================================
+
+Create Pro and Enterprise-only functionality.
+
+PRO FEATURES:
+- Multi-agent orchestration (v3)
+- Self-improving system (v4)
+- Autonomous CI system (v5)
+- Unlimited projects
+- Team workspaces
+- Priority processing
+- Advanced templates
+- Documentation generation
+- Landing page generation
+
+ENTERPRISE FEATURES:
+- White-label deployment
+- SSO/SAML
+- Audit logs
+- On-premise installation
+- Private model integration
+- Dedicated support
+
+Implement:
+- Database schema
+- Backend services
+- Feature entitlement system
+- Frontend gating
+- Billing integration
+- Usage metering
+- Tests
+
+====================================================
+OUTPUT REQUIREMENTS
+====================================================
+
+Provide:
+1. Architecture explanation
+2. Updated directory structure
+3. Full production-grade code
+4. Database migrations
+5. Tests
+6. Seed data
+7. Documentation
+8. Marketing content
+9. Pricing model
+10. Integration instructions
+11. Recommended next implementation phase
+
+----------------------------------------------------
+RULES
+----------------------------------------------------
+- NEVER hallucinate previous code
+- NEVER duplicate existing modules
+- NEVER skip validation step
+- ALWAYS ensure runnable system output
+If context is lost or conversation restarts:
+If youhave not created a project_state.json file create it now. All code needs to be setup  by one clik script.
+
+You MUST:
+1. Ask for project_state.json
+2. Reconstruct architecture from it
+Now, acknowledge that you understood your job and dwait for the next prompt.
+Provides codes in batches to be implemented one click system like before, folders must be created by one click as well. One batch needs to be complied successfully before you write next batch. after each batch write project_state.json with version number from now on.
+check syntax and encoding, tab etc for producing the code.
