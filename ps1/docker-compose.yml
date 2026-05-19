@@ -1,0 +1,22 @@
+﻿services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+    ports:
+      - "4001:4001"
+    environment:
+      ENVIRONMENT: development
+    volumes:
+      - ./backend:/app/backend
+      - ./factory:/app/factory
+    command: uvicorn app.main:app --host 0.0.0.0 --port 4001 --reload
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.frontend.simple
+    ports:
+      - "4000:80"
+    depends_on:
+      - backend
