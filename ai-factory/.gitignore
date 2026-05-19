@@ -88,4 +88,27 @@ prompt.txt
 
 # Test files (keep structure, ignore generated)
 tests/__pycache__/
-tests/.pytest_cache/
+tests/.pytest_cache/# PowerShell scripts (keep only if essential, but block all to be safe)
+*.ps1
+*.psm1
+*.psd1
+
+# Data and backup folders
+data/
+backups/
+*.json
+!requirements.txt
+
+# Temporary and log files
+*.log
+*.tmp
+*.bak
+*.swp
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+.env
+venv/
