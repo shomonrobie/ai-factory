@@ -1,0 +1,61 @@
+﻿services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: aifactory
+      POSTGRES_PASSWORD: aifactory123
+      POSTGRES_DB: aifactory
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aifactory"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+    ports:
+      - "4001:4001"
+    environment:
+      DATABASE_URL: postgresql://aifactory:aifactory123@postgres:5432/aifactory
+      REDIS_URL: redis://redis:6379
+      ENVIRONMENT: development
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app/backend
+      - ./factory:/app/factory
+    command: uvicorn app.main:app --host 0.0.0.0 --port 4001 --reload
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.frontend
+    ports:
+      - "4000:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  redis_data:

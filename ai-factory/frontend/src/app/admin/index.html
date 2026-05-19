@@ -232,7 +232,10 @@
     <script>
         const ADMIN_EMAIL = 'admin@factoryos.ai';
         const ADMIN_PASSWORD = 'admin123';
-        
+        const API_BASE = 'http://localhost:4001';
+        let allBatches = [];
+
+
         function checkLogin() {
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
@@ -398,30 +401,44 @@
                 console.error('Error loading usage:', error);
             }
         }
-        
-        
+                
             function openUserModal() { 
                 document.getElementById('userModal').style.display = 'flex'; 
                 document.getElementById('newUserName').value = '';
                 document.getElementById('newUserEmail').value = '';
             }
             function closeUserModal() { document.getElementById('userModal').style.display = 'none'; }
-
+            
             async function createUser() {
                 const name = document.getElementById('newUserName').value.trim();
                 const email = document.getElementById('newUserEmail').value.trim();
                 const tier = document.getElementById('newUserTier').value;
-                if(!name || !email) { alert('Name and Email are required'); return; }
+                
+                if (!name || !email) {
+                    alert('Name and Email are required');
+                    return;
+                }
+                
                 try {
-                    await fetch('/api/v1/admin/users', { 
-                        method:'POST', 
-                        headers:{'Content-Type':'application/json'}, 
-                        body: JSON.stringify({name, email, tier}) 
+                    const response = await fetch('/api/v1/admin/users', { 
+                        method: 'POST', 
+                        headers: { 'Content-Type': 'application/json' }, 
+                        body: JSON.stringify({ name, email, tier, status: 'active' }) 
                     });
-                    closeUserModal();
-                    loadUsers();
-                } catch(e) { alert('Failed to create user'); }
+                    
+                    if (response.ok) {
+                        closeUserModal();
+                        loadUsers();
+                        alert('User created successfully!');
+                    } else {
+                        const error = await response.json();
+                        alert('Error: ' + JSON.stringify(error));
+                    }
+                } catch(e) { 
+                    alert('Failed to create user: ' + e.message); 
+                }
             }
+            
 
             async function deleteUser(userId) {
                 if(confirm('Delete this user?')) {
@@ -472,35 +489,116 @@
             }
         }
     
-    // --- Batch Management JS ---
-    async function loadBatches() {
-        try {
-            const res = await fetch('/api/v1/batches/');
-            const data = await res.json();
-            const filter = document.getElementById('batchStatusFilter')?.value || '';
-            const filtered = filter ? data.filter(b => b.status === filter) : data;
-            const tbody = document.getElementById('batchesTable');
-            if (!filtered || filtered.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="7">No batches found</td></tr>';
-            } else {
-                tbody.innerHTML = filtered.map(b => `
-                    <tr>
-                        <td>${b.id || '-'}</td>
-                        <td>${b.batch_number || '-'}</td>
-                        <td>${(b.prompt || '').substring(0, 40)}...</td>
-                        <td><span style="padding:4px 8px;border-radius:4px;background:${b.status==='completed'?'#C6F6D5':b.status==='failed'?'#FED7D7':'#FEFCBF'}">${b.status}</span></td>
-                        <td>${b.result?.validation_score || '-'}</td>
-                        <td>${new Date(b.created_at || Date.now()).toLocaleDateString()}</td>
-                        <td>
-                            <button class="btn" onclick="editBatch(${b.id})" style="padding:4px 8px;font-size:12px;">Edit</button>
-                            <button class="btn btn-danger" onclick="deleteBatch(${b.id})" style="padding:4px 8px;font-size:12px;">Delete</button>
-                        </td>
-                    </tr>
-                `).join('');
+       
+        
+
+        async function loadBatches() {
+            try {
+                const res = await fetch('/api/v1/batches/');
+                const data = await res.json();
+                allBatches = Array.isArray(data) ? data : [];  // ✅ Populate cache
+                
+                const filter = document.getElementById('batchStatusFilter')?.value || '';
+                const filtered = filter ? allBatches.filter(b => b.status === filter) : allBatches;
+                
+                const tbody = document.getElementById('batchesTable');
+                if (filtered.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="7">No batches found</td></tr>';
+                } else {
+                    tbody.innerHTML = filtered.map(b => `
+                        <tr>
+                            <td>${b.id ?? '-'}</td>
+                            <td>${b.batch_number ?? '-'}</td>
+                            <td>${(b.prompt || '').substring(0, 40)}...</td>
+                            <td><span style="padding:4px 8px;border-radius:4px;background:${getStatusColor(b.status)}">${b.status}</span></td>
+                            <td>${b.result?.validation_score ?? '-'}</td>
+                            <td>${new Date(b.created_at ?? Date.now()).toLocaleDateString()}</td>
+                            <td>
+                                <button class="btn" onclick="editBatch(${b.id})" style="padding:4px 8px;font-size:12px;">Edit</button>
+                                <button class="btn btn-danger" onclick="deleteBatch(${b.id})" style="padding:4px 8px;font-size:12px;">Delete</button>
+                            </td>
+                        </tr>
+                    `).join('');
+                }
+            } catch(e) { 
+                console.error('Load batches error:', e); 
+                document.getElementById('batchesTable').innerHTML = '<tr><td colspan="7" style="color:#E53E3E;">Failed to load batches</td></tr>';
             }
-        } catch(e) { console.error(e); }
+        }
+        function editBatch(id) {
+            // ✅ Convert id to number for comparison (in case onclick passes string)
+            const numericId = typeof id === 'string' ? parseInt(id, 10) : id;
+            
+            console.log('Editing batch ID:', numericId);
+            
+            // ✅ Try cache first (now that allBatches is populated)
+            if (Array.isArray(allBatches) && allBatches.length > 0) {
+                const batch = allBatches.find(b => 
+                    (b.id === numericId) || (b.id == numericId) || (String(b.id) === String(numericId))
+                );
+                
+                if (batch) {
+                    console.log('Found batch in cache:', batch);
+                    populateBatchModal(batch);
+                    return;
+                }
+            }
+            
+            // ✅ Fallback: Try to get from list endpoint (since single GET doesn't exist)
+            fetch('/api/v1/batches/')
+                .then(res => res.json())
+                .then(batches => {
+                    const batch = batches.find(b => 
+                        (b.id === numericId) || (b.id == numericId) || (String(b.id) === String(numericId))
+                    );
+                    if (batch) {
+                        populateBatchModal(batch);
+                    } else {
+                        alert('Batch not found');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching batches:', error);
+                    alert('Could not load batch data');
+                });
+        }
+
+        // ✅ Helper function to populate modal (DRY principle)
+        function populateBatchModal(batch) {
+            document.getElementById('batchModalTitle').innerText = 'Edit Batch #' + (batch.id ?? batch.batch_number);
+            document.getElementById('batchEditId').value = batch.id ?? '';
+            document.getElementById('batchPrompt').value = batch.prompt || '';
+            document.getElementById('batchStatus').value = batch.status || 'pending';
+            document.getElementById('batchModal').style.display = 'flex';
+        }
+        function getStatusColor(status) {
+            return { completed: '#C6F6D5', failed: '#FED7D7', processing: '#FEFCBF', pending: '#EBF8FF' }[status] || '#E2E8F0';
+        }
+    // Delete batch function
+    async function deleteBatch(id) {
+        if (!confirm('Are you sure you want to delete this batch?')) {
+            return;
+        }
+        
+        try {
+            const response = await fetch(`/api/v1/batches/${id}`, { method: 'DELETE' });
+            
+            if (response.ok) {
+                // Remove from local array
+                allBatches = allBatches.filter(b => b.id !== id);
+                // Reload the table
+                await loadBatches();
+                alert('Batch deleted successfully');
+            } else {
+                alert('Failed to delete batch');
+            }
+        } catch(e) {
+            console.error('Delete error:', e);
+            alert('Error deleting batch');
+        }
     }
 
+    // Show add batch modal
     function showAddBatchModal() {
         document.getElementById('batchModalTitle').innerText = 'Add New Batch';
         document.getElementById('batchEditId').value = '';
@@ -509,29 +607,65 @@
         document.getElementById('batchModal').style.display = 'flex';
     }
 
-    function editBatch(id) {
-        document.getElementById('batchModalTitle').innerText = 'Edit Batch #' + id;
-        document.getElementById('batchEditId').value = id;
-        document.getElementById('batchModal').style.display = 'flex';
+    // Close batch modal
+    function closeBatchModal() {
+        document.getElementById('batchModal').style.display = 'none';
+        document.getElementById('batchPrompt').value = '';
+        document.getElementById('batchEditId').value = '';
     }
 
-    function closeBatchModal() { document.getElementById('batchModal').style.display = 'none'; }
-
+    // Save batch (create or update)
     async function saveBatch() {
         const id = document.getElementById('batchEditId').value;
         const prompt = document.getElementById('batchPrompt').value;
         const status = document.getElementById('batchStatus').value;
-        const method = id ? 'PUT' : 'POST';
-        const url = id ? `/api/v1/batches/${id}` : '/api/v1/batches/';
+        
+        if (!prompt.trim()) {
+            alert('Please enter a prompt');
+            return;
+        }
+        
         try {
-            await fetch(url, { method, headers: {'Content-Type':'application/json'}, body: JSON.stringify({ prompt, status, batch_number: id ? undefined : Date.now() }) });
-            closeBatchModal(); loadBatches();
-        } catch(e) { alert('Failed to save batch'); }
+            let response;
+            
+            if (id) {
+                // UPDATE existing batch
+                console.log('Updating batch ID:', id);
+                response = await fetch(`/api/v1/batches/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt: prompt.trim(), status })
+                });
+            } else {
+                // CREATE new batch
+                console.log('Creating new batch');
+                response = await fetch('/api/v1/batches/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        batch_number: Date.now(), 
+                        prompt: prompt.trim(), 
+                        status 
+                    })
+                });
+            }
+            
+            if (response.ok) {
+                closeBatchModal();
+                await loadBatches(); // Refresh the list
+                alert(id ? 'Batch updated successfully!' : 'Batch created successfully!');
+            } else {
+                const error = await response.json();
+                console.error('Save error response:', error);
+                alert('Error: ' + JSON.stringify(error));
+            }
+        } catch(e) {
+            console.error('Save error:', e);
+            alert('Failed to save batch: ' + e.message);
+        }
     }
 
-    async function deleteBatch(id) {
-        if(confirm('Delete this batch?')) { await fetch(`/api/v1/batches/${id}`, { method:'DELETE' }); loadBatches(); }
-    }
+
 
     // --- Agent Configuration JS ---
     const agentList = ['Architect', 'Backend', 'Frontend', 'Database', 'QA', 'Security', 'DevOps', 'Code Generator'];

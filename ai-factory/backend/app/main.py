@@ -7,9 +7,9 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = FastAPI(
-    title="AI Software Factory",
+    title="FactoryOS AI",
     version="1.5.0",
-    description="Enterprise-grade AI-powered software engineering factory with CI/CD"
+    description="The Autonomous AI Software Engineering Platform"
 )
 
 app.add_middleware(
@@ -22,10 +22,18 @@ app.add_middleware(
 
 app.include_router(api_v1_router, prefix="/api/v1")
 
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "version": "1.5.0"}
+
 @app.get("/")
 async def root():
     return {
-        "message": "AI Software Factory API",
+        "message": "FactoryOS AI API",
         "version": "1.5.0",
-        "features": ["Multi-Agent Orchestration", "Self-Improving System", "CI/CD Pipeline"]
+        "features": [
+            "Multi-Agent Orchestration",
+            "Self-Improving System",
+            "CI/CD Pipeline"
+        ]
     }
