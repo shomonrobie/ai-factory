@@ -1,0 +1,35 @@
+﻿{
+  "common": {
+    "app_name": "FactoryOS AI",
+    "tagline": "La Plateforme Autonome d'IngÃ©nierie Logicielle par IA",
+    "learn_more": "En Savoir Plus",
+    "get_started": "Commencer",
+    "contact_us": "Nous Contacter",
+    "sign_in": "Se Connecter",
+    "sign_up": "S'inscrire",
+    "dashboard": "Tableau de Bord",
+    "docs": "Documentation",
+    "blog": "Blog",
+    "pricing": "Tarifs",
+    "demo": "RÃ©server une DÃ©mo"
+  },
+  "home": {
+    "hero_title": "CrÃ©ez des Logiciels de Production avec des Agents IA",
+    "hero_subtitle": "8 agents IA spÃ©cialisÃ©s travaillent ensemble pour planifier, construire, tester et dÃ©ployer vos applications automatiquement.",
+    "feature_1_title": "DÃ©veloppement 10x Plus Rapide",
+    "feature_2_title": "8 Agents SpÃ©cialisÃ©s",
+    "feature_3_title": "SystÃ¨me Auto-amÃ©liorant",
+    "feature_4_title": "Code PrÃªt pour la Production",
+    "feature_5_title": "Automatisation CI/CD",
+    "feature_6_title": "SÃ©curitÃ© Entreprise"
+  },
+  "pricing": {
+    "title": "Tarifs Simples et Transparents",
+    "free_name": "Gratuit",
+    "pro_name": "Pro",
+    "pro_price": "49â‚¬",
+    "enterprise_name": "Entreprise",
+    "popular": "LE PLUS POPULAIRE",
+    "free_trial": "Essai gratuit de 14 jours"
+  }
+}

@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - FactoryOS AI</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Inter',sans-serif;background:#F7FAFC;}
+        .header{background:#1A365D;color:white;padding:16px 0;position:sticky;top:0;}
+        .header .container{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+        .logo{font-size:24px;font-weight:bold;}
+        .logo a{color:white;text-decoration:none;}
+        .nav{display:flex;gap:20px;align-items:center;flex-wrap:wrap;}
+        .nav a{color:white;text-decoration:none;}
+        .btn-outline{border:1px solid white;padding:8px 20px;border-radius:8px;}
+        .btn-solid{background:#319795;padding:8px 20px;border-radius:8px;}
+        .container{max-width:1280px;margin:0 auto;padding:0 24px;}
+        .blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:30px;padding:60px 0;}
+        .blog-card{background:white;border-radius:12px;padding:24px;box-shadow:0 2px 4px rgba(0,0,0,0.1);transition:transform 0.2s;}
+        .blog-card:hover{transform:translateY(-2px);}
+        .blog-date{color:#718096;font-size:14px;margin-bottom:10px;}
+        .blog-title{font-size:20px;color:#1A365D;margin-bottom:10px;}
+        .blog-excerpt{color:#4A5568;margin-bottom:15px;line-height:1.6;}
+        .read-more{color:#3182CE;text-decoration:none;font-weight:500;}
+        .read-more:hover{text-decoration:underline;}
+        .footer{background:#1A365D;color:white;padding:40px 0;text-align:center;margin-top:40px;}
+        @media (max-width:768px){.blog-grid{grid-template-columns:1fr;}}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo"><a href="/">FactoryOS AI</a></div>
+            <nav class="nav">
+                <a href="/#features">Features</a>
+                <a href="/#agents">Agents</a>
+                <a href="/pricing">Pricing</a>
+                <a href="/docs">Docs</a>
+                <a href="/blog">Blog</a>        
+                <a href="/login" class="btn-outline">Sign In</a>
+                <a href="/signup" class="btn-solid">Get Started</a>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <h1 style="margin-top:40px;">Blog</h1>
+        <p style="margin-bottom:20px;">Insights on AI-powered software engineering</p>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <div class="blog-date">May 18, 2026</div>
+                <h2 class="blog-title">Introducing FactoryOS AI v1.5</h2>
+                <p class="blog-excerpt">Complete CI/CD automation, monitoring, and batch scheduling now available.</p>
+                <a href="/blog/introducing-v1.5" class="read-more">Read More</a>
+            </div>
+            <div class="blog-card">
+                <div class="blog-date">May 15, 2026</div>
+                <h2 class="blog-title">How 8 AI Agents Work Together</h2>
+                <p class="blog-excerpt">Learn about multi-agent orchestration and how agents coordinate to build complete applications.</p>
+                <a href="/blog/multi-agent-orchestration" class="read-more">Read More</a>
+            </div>
+            <div class="blog-card">
+                <div class="blog-date">May 10, 2026</div>
+                <h2 class="blog-title">The Self-Improving Feedback Loop</h2>
+                <p class="blog-excerpt">PLAN â†’ BUILD â†’ REVIEW â†’ SCORE â†’ OPTIMIZE â†’ FINALIZE - How our evolution engine works.</p>
+                <a href="/blog/feedback-loop" class="read-more">Read More</a>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container"><p>&copy; 2026 FactoryOS AI. All rights reserved.</p></div>
+    </footer>
+</body>
+</html>

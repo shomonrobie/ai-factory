@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout - FactoryOS AI</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,#1A365D 0%,#3182CE 100%);min-height:100vh;display:flex;justify-content:center;align-items:center;}
+        .logout-container{background:white;padding:40px;border-radius:12px;width:400px;text-align:center;}
+        h1{color:#1A365D;margin-bottom:20px;}
+        p{margin-bottom:20px;}
+        .btn{background:#3182CE;color:white;padding:12px 24px;border:none;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-block;}
+        .btn:hover{background:#2C5282;}
+    </style>
+</head>
+<body>
+    <div class="logout-container">
+        <h1>Logged Out</h1>
+        <p>You have been successfully logged out.</p>
+        <a href="/" class="btn">Return to Home</a>
+        <a href="/login" class="btn" style="background:#38A169;margin-left:10px;">Login Again</a>
+    </div>
+    <script>
+        sessionStorage.removeItem('admin_logged_in');
+        localStorage.removeItem('admin_logged_in');
+    </script>
+</body>
+</html>

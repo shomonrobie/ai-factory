@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Sign Up - FactoryOS AI</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,#1A365D 0%,#3182CE 100%);min-height:100vh;}
+.header{background:#1A365D;color:white;padding:16px 0;}
+.header .container{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;}
+.logo{font-size:24px;font-weight:bold;}
+.logo a{color:white;text-decoration:none;}
+.nav a{color:white;text-decoration:none;margin-left:20px;}
+.btn-outline{border:1px solid white;padding:8px 20px;border-radius:8px;}
+.signup-container{max-width:500px;margin:40px auto;padding:40px;background:white;border-radius:12px;box-shadow:0 20px 40px rgba(0,0,0,0.1);}
+h1{color:#1A365D;margin-bottom:10px;}
+.form-group{margin-bottom:20px;}
+label{display:block;margin-bottom:8px;font-weight:500;}
+input,select{width:100%;padding:12px;border:1px solid #E2E8F0;border-radius:8px;font-size:16px;}
+button{width:100%;padding:12px;background:#319795;color:white;border:none;border-radius:8px;font-size:16px;cursor:pointer;}
+button:hover{background:#2C7A7B;}
+.login-link{text-align:center;margin-top:20px;}
+a{color:#3182CE;text-decoration:none;}
+.footer{background:#1A365D;color:white;padding:40px 0;text-align:center;margin-top:40px;}
+</style>
+</head>
+<body>
+<header class="header"><div class="container"><div class="logo"><a href="/">FactoryOS AI</a></div><nav class="nav"><a href="/#features">Features</a><a href="/#agents">Agents</a><a href="/pricing">Pricing</a><a href="/docs">Docs</a><a href="/blog">Blog</a><a href="/login" class="btn-outline">Sign In</a></nav></div></header>
+<div class="signup-container"><h1>Create Account</h1><p>Start building with FactoryOS AI</p>
+<form id="signupForm"><div class="form-group"><label>Full Name</label><input type="text" id="fullName" required></div>
+<div class="form-group"><label>Email</label><input type="email" id="email" required></div>
+<div class="form-group"><label>Password</label><input type="password" id="password" required></div>
+<div class="form-group"><label>Confirm Password</label><input type="password" id="confirmPassword" required></div>
+<div class="form-group"><label>Plan</label><select id="plan"><option value="free">Free - $0/month (5 batches)</option><option value="pro">Pro - $49/month (Unlimited)</option></select></div>
+<button type="submit">Start Free Trial</button></form>
+<div class="login-link">Already have an account? <a href="/login">Sign in</a></div></div>
+<footer class="footer"><div class="container"><p>&copy; 2026 FactoryOS AI. All rights reserved.</p></div></footer>
+<script>document.getElementById('signupForm').addEventListener('submit',function(e){e.preventDefault();const p=document.getElementById('password').value;const c=document.getElementById('confirmPassword').value;if(p!==c){alert('Passwords do not match');return;}alert('Account created! Redirecting to dashboard...');window.location.href='/dashboard';});</script>
+</body>
+</html>

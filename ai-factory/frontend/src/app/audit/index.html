@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Audit Logs - FactoryOS AI</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#F7FAFC;}
+.header{background:#1A365D;color:white;padding:16px 0;}
+.header .container{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;}
+.logo{font-size:24px;font-weight:bold;}
+.logo a{color:white;text-decoration:none;}
+.nav a{color:white;text-decoration:none;margin-left:20px;}
+.container{max-width:1400px;margin:0 auto;padding:40px 24px;}
+h1{color:#1A365D;}
+table{width:100%;background:white;border-radius:8px;overflow:hidden;}
+th,td{padding:12px;text-align:left;border-bottom:1px solid #EDF2F7;}
+th{background:#EDF2F7;}
+.footer{background:#1A365D;color:white;padding:40px 0;text-align:center;margin-top:40px;}
+</style>
+</head>
+<body>
+<div id="loginCheck"></div>
+<div id="mainContent" style="display:none;">
+<header class="header"><div class="container"><div class="logo"><a href="/">FactoryOS AI</a></div><nav class="nav"><a href="/#features">Features</a><a href="/#agents">Agents</a><a href="/pricing">Pricing</a><a href="/docs">Docs</a><a href="/blog">Blog</a><a href="/admin">Admin</a><a href="#" id="logoutLink">Logout</a></nav></div></header>
+<div class="container"><h1>Audit Logs</h1><table id="logsTable"><thead><tr><th>Timestamp</th><th>User</th><th>Action</th><th>Resource</th></tr></thead><tbody><tr><td colspan="4">Loading...</td></tr></tbody></table></div>
+<footer class="footer"><div class="container"><p>&copy; 2026 FactoryOS AI</p></div></footer>
+</div>
+<script>
+function checkAuth() {
+    if (sessionStorage.getItem('admin_logged_in') !== 'true') {
+        window.location.href = '/admin';
+        return false;
+    }
+    return true;
+}
+if (checkAuth()) {
+    document.getElementById('mainContent').style.display = 'block';
+    document.getElementById('loginCheck').style.display = 'none';
+    fetch('/api/v1/audit/logs?days=30').then(r=>r.json()).then(data=>{
+        const tbody = document.querySelector('#logsTable tbody');
+        if(data.logs && data.logs.length>0){
+            tbody.innerHTML = data.logs.map(l=>`<tr><td>${new Date(l.timestamp).toLocaleString()}</td><td>${l.user_id}</td><td>${l.action}</td><td>${l.resource_type}</td></tr>`).join('');
+        } else { tbody.innerHTML = '<tr><td colspan="4">No logs found</td></tr>'; }
+    }).catch(()=>{});
+}
+document.getElementById('logoutLink')?.addEventListener('click', function(e){ e.preventDefault(); sessionStorage.removeItem('admin_logged_in'); window.location.href='/'; });
+</script>
+</body>
+</html>

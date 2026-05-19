@@ -1,0 +1,36 @@
+﻿# scripts/seed/demo_users.json
+[
+  {
+    "id": "user_demo_1",
+    "email": "demo@factoryos.ai",
+    "name": "Demo User",
+    "tier": "pro",
+    "created_at": "2026-01-01T00:00:00Z",
+    "metadata": {
+      "company": "Demo Corp",
+      "role": "CTO"
+    }
+  },
+  {
+    "id": "user_demo_2",
+    "email": "startup@factoryos.ai",
+    "name": "Startup Founder",
+    "tier": "free",
+    "created_at": "2026-02-15T00:00:00Z",
+    "metadata": {
+      "company": "Startup Inc",
+      "role": "Founder"
+    }
+  },
+  {
+    "id": "user_demo_3",
+    "email": "enterprise@factoryos.ai",
+    "name": "Enterprise Admin",
+    "tier": "enterprise",
+    "created_at": "2026-03-10T00:00:00Z",
+    "metadata": {
+      "company": "Enterprise Corp",
+      "role": "IT Director"
+    }
+  }
+]

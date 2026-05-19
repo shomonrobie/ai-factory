@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Pricing - FactoryOS AI</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#F7FAFC;}
+.header{background:#1A365D;color:white;padding:16px 0;position:sticky;top:0;}
+.header .container{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;}
+.logo{font-size:24px;font-weight:bold;}
+.logo a{color:white;text-decoration:none;}
+.nav a{color:white;text-decoration:none;margin-left:20px;}
+.btn-outline{border:1px solid white;padding:8px 20px;border-radius:8px;}
+.btn-solid{background:#319795;padding:8px 20px;border-radius:8px;}
+.container{max-width:1280px;margin:0 auto;padding:0 24px;}
+.pricing{padding:80px 0;}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin-top:40px;}
+.pricing-card{background:white;padding:30px;border-radius:12px;text-align:center;box-shadow:0 4px 6px rgba(0,0,0,0.1);}
+.pricing-card.pro{border:2px solid #3182CE;position:relative;}
+.popular-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#3182CE;color:white;padding:4px 12px;border-radius:20px;font-size:12px;}
+.price{font-size:48px;color:#1A365D;margin:20px 0;}
+.price span{font-size:16px;color:#718096;}
+.features-list{list-style:none;margin:20px 0;text-align:left;}
+.features-list li{padding:8px 0;border-bottom:1px solid #EDF2F7;}
+.features-list li:before{content:"âœ“";color:#38A169;margin-right:10px;}
+.cta-button{background:#3182CE;color:white;padding:12px 24px;border:none;border-radius:8px;cursor:pointer;margin-top:20px;width:100%;}
+.cta-button:hover{background:#2C5282;}
+.footer{background:#1A365D;color:white;padding:40px 0;text-align:center;margin-top:40px;}
+</style>
+</head>
+<body>
+<header class="header"><div class="container"><div class="logo"><a href="/">FactoryOS AI</a></div><nav class="nav"><a href="/#features">Features</a><a href="/#agents">Agents</a><a href="/pricing">Pricing</a><a href="/docs">Docs</a><a href="/blog">Blog</a><a href="/login" class="btn-outline">Sign In</a><a href="/signup" class="btn-solid">Get Started</a></nav></div></header>
+<div class="pricing"><div class="container"><h1 style="text-align:center;color:#1A365D;">Simple, Transparent Pricing</h1><p style="text-align:center;margin-bottom:40px;">Choose the plan that fits your needs. All plans include a 14-day free trial.</p>
+<div class="pricing-grid">
+<div class="pricing-card"><h3>Free</h3><div class="price">$0<span>/month</span></div><ul class="features-list"><li>5 batches per month</li><li>Single user</li><li>Basic templates</li><li>Community support</li><li>7-day history</li></ul><button class="cta-button" style="background:#4A5568;" onclick="location.href='/signup'">Get Started</button></div>
+<div class="pricing-card pro"><div class="popular-badge">MOST POPULAR</div><h3>Pro</h3><div class="price">$49<span>/month</span></div><ul class="features-list"><li>Unlimited batches</li><li>Multi-agent orchestration</li><li>Self-improving system</li><li>Team workspaces (3 users)</li><li>Priority processing</li><li>Email support</li><li>90-day history</li></ul><button class="cta-button" onclick="location.href='/signup?plan=pro'">Start Free Trial</button></div>
+<div class="pricing-card"><h3>Enterprise</h3><div class="price">Custom</div><ul class="features-list"><li>White-label deployment</li><li>SSO/SAML</li><li>Audit logs</li><li>On-premise installation</li><li>Private model integration</li><li>Dedicated support</li><li>Custom SLA</li><li>Unlimited history</li></ul><button class="cta-button" style="background:#4A5568;" onclick="location.href='/contact'">Contact Sales</button></div>
+</div></div></div>
+<footer class="footer"><div class="container"><p>&copy; 2026 FactoryOS AI. All rights reserved.</p></div></footer>
+</body>
+</html>

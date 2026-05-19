@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FactoryOS AI - Autonomous AI Software Engineering Platform</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; color: #2D3748; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Header Styles */
+        .header { background: #1A365D; color: white; padding: 16px 0; position: sticky; top: 0; z-index: 100; }
+        .header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 24px; font-weight: bold; }
+        .logo a { color: white; text-decoration: none; }
+        .nav { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+        .nav a { color: white; text-decoration: none; transition: opacity 0.2s; }
+        .nav a:hover { opacity: 0.8; }
+        .btn-outline { border: 1px solid white; padding: 8px 20px; border-radius: 8px; }
+        .btn-solid { background: #319795; padding: 8px 20px; border-radius: 8px; }
+        
+        /* Hero Section */
+        .hero { background: linear-gradient(135deg, #1A365D 0%, #3182CE 100%); color: white; padding: 80px 0; text-align: center; }
+        .hero h1 { font-size: 48px; margin-bottom: 20px; }
+        .hero p { font-size: 20px; margin-bottom: 30px; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .cta-button { background: #319795; color: white; padding: 15px 40px; border: none; border-radius: 8px; font-size: 18px; cursor: pointer; transition: transform 0.2s; }
+        .cta-button:hover { transform: translateY(-2px); background: #2C7A7B; }
+        
+        /* Features Section */
+        .features { padding: 80px 0; background: #F7FAFC; }
+        .section-title { text-align: center; font-size: 36px; margin-bottom: 40px; color: #1A365D; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .feature-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .feature-card h3 { color: #1A365D; margin-bottom: 15px; font-size: 20px; }
+        .feature-card p { color: #4A5568; }
+        
+        /* Agents Section */
+        .agents { padding: 80px 0; }
+        .agents-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-top: 40px; }
+        .agent-card { background: #EDF2F7; padding: 20px; border-radius: 8px; text-align: center; }
+        .agent-card h4 { color: #1A365D; margin-bottom: 8px; }
+        .agent-card p { font-size: 14px; color: #718096; }
+        
+        /* Pricing Section */
+        .pricing { padding: 80px 0; background: #F7FAFC; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .pricing-card { background: white; padding: 30px; border-radius: 12px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .pricing-card.pro { border: 2px solid #3182CE; position: relative; }
+        .popular-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #3182CE; color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; }
+        .price { font-size: 48px; color: #1A365D; margin: 20px 0; }
+        .price span { font-size: 16px; color: #718096; }
+        .features-list { list-style: none; margin: 20px 0; text-align: left; }
+        .features-list li { padding: 8px 0; border-bottom: 1px solid #EDF2F7; }
+        .features-list li:before { content: "âœ“"; color: #38A169; margin-right: 10px; }
+        
+        /* Footer */
+        .footer { background: #1A365D; color: white; padding: 60px 0 40px; margin-top: 60px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { margin-bottom: 20px; font-size: 16px; }
+        .footer-col a { color: #A0AEC0; text-decoration: none; display: block; margin-bottom: 10px; }
+        .footer-col a:hover { color: white; }
+        .footer-bottom { text-align: center; padding-top: 40px; border-top: 1px solid #2D3748; color: #A0AEC0; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .nav { margin-top: 10px; justify-content: center; }
+            .features-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo"><a href="/">FactoryOS AI</a></div>
+            <nav class="nav">
+                <a href="/#features">Features</a>
+                <a href="/#agents">Agents</a>
+                <a href="/pricing">Pricing</a>
+                <a href="/docs">Docs</a>
+                <a href="/blog">Blog</a>                
+                <a href="/login" class="btn-outline">Sign In</a>
+                <a href="/signup" class="btn-solid">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Build Production Software with AI Agents</h1>
+            <p>8 specialized AI agents work together to plan, build, test, and deploy your applications automatically.</p>
+            <button class="cta-button" onclick="location.href='/signup'">Start Building Free</button>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why FactoryOS AI?</h2>
+            <div class="features-grid">
+                <div class="feature-card"><h3>10x Faster Development</h3><p>Generate complete applications in minutes, not months. From idea to production in hours.</p></div>
+                <div class="feature-card"><h3>8 Specialized Agents</h3><p>Architect, Backend, Frontend, Database, QA, Security, DevOps, and Code Generator working together.</p></div>
+                <div class="feature-card"><h3>Self-Improving System</h3><p>Code reviews itself, scores quality (0-100), and automatically optimizes with feedback loops.</p></div>
+                <div class="feature-card"><h3>Production-Ready Code</h3><p>Generated code includes tests, documentation, Docker configs, and CI/CD pipelines.</p></div>
+                <div class="feature-card"><h3>CI/CD Automation</h3><p>Built-in pipeline runs build, test, security, and deploy stages automatically.</p></div>
+                <div class="feature-card"><h3>Enterprise Security</h3><p>SOC2 compliant, encrypted data, SSO support, and audit logging for Enterprise.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="agents" class="agents">
+        <div class="container">
+            <h2 class="section-title">Meet Your AI Engineering Team</h2>
+            <p style="text-align: center; margin-bottom: 20px;">8 specialized agents work in orchestration to build your software</p>
+            <div class="agents-grid">
+                <div class="agent-card"><h4>Architect</h4><p>System design</p></div>
+                <div class="agent-card"><h4>Backend</h4><p>API generation</p></div>
+                <div class="agent-card"><h4>Frontend</h4><p>UI components</p></div>
+                <div class="agent-card"><h4>Database</h4><p>Schema design</p></div>
+                <div class="agent-card"><h4>QA</h4><p>Test generation</p></div>
+                <div class="agent-card"><h4>Security</h4><p>Vulnerability scan</p></div>
+                <div class="agent-card"><h4>DevOps</h4><p>CI/CD pipeline</p></div>
+                <div class="agent-card"><h4>Code</h4><p>Code generation</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="container">
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+            <p style="text-align: center; margin-bottom: 40px;">Choose the plan that fits your needs. All plans include a 14-day free trial.</p>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Free</h3>
+                    <div class="price">$0<span>/month</span></div>
+                    <ul class="features-list"><li>5 batches per month</li><li>Single user</li><li>Basic templates</li><li>Community support</li><li>7-day history</li></ul>
+                    <button class="cta-button" style="background:#4A5568;" onclick="location.href='/signup'">Get Started</button>
+                </div>
+                <div class="pricing-card pro">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <h3>Pro</h3>
+                    <div class="price">$49<span>/month</span></div>
+                    <ul class="features-list"><li>Unlimited batches</li><li>Multi-agent orchestration</li><li>Self-improving system</li><li>Team workspaces (3 users)</li><li>Priority processing</li><li>Email support</li><li>90-day history</li></ul>
+                    <button class="cta-button" onclick="location.href='/signup?plan=pro'">Start Free Trial</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">Custom</div>
+                    <ul class="features-list"><li>White-label deployment</li><li>SSO/SAML</li><li>Audit logs</li><li>On-premise installation</li><li>Dedicated support</li><li>Custom SLA</li></ul>
+                    <button class="cta-button" style="background:#4A5568;" onclick="location.href='/contact'">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><h4>Product</h4><a href="/#features">Features</a><a href="/#agents">Agents</a><a href="/pricing">Pricing</a><a href="/demo">Book a Demo</a></div>
+                <div class="footer-col"><h4>Resources</h4><a href="/docs">Documentation</a><a href="/blog">Blog</a><a href="/api-docs">API Reference</a><a href="/status">System Status</a></div>
+                <div class="footer-col"><h4>Company</h4><a href="/about">About Us</a><a href="/careers">Careers</a><a href="/press">Press</a><a href="/contact">Contact</a></div>
+                <div class="footer-col"><h4>Legal</h4><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/security">Security</a><a href="/gdpr">GDPR</a></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 FactoryOS AI. All rights reserved. The Autonomous AI Software Engineering Platform.</p></div>
+        </div>
+    </footer>
+</body>
+</html>
+

@@ -1,0 +1,68 @@
+﻿# FactoryOS AI - Financial Projections (3-Year Forecast)
+
+## Monthly Revenue Forecast (Year 1)
+Month,Pro Customers,Pro MRR,Enterprise Deals,Enterprise Revenue,Total MRR,Total ARR
+Month 1,10,$490,0,$0,$490,$5,880
+Month 2,15,$735,0,$0,$735,$8,820
+Month 3,22,$1,078,0,$0,$1,078,$12,936
+Month 4,30,$1,470,0,$0,$1,470,$17,640
+Month 5,40,$1,960,0,$0,$1,960,$23,520
+Month 6,52,$2,548,0,$0,$2,548,$30,576
+Month 7,65,$3,185,0,$0,$3,185,$38,220
+Month 8,80,$3,920,1,$25,000,$28,920,$347,040
+Month 9,95,$4,655,1,$25,000,$29,655,$355,860
+Month 10,110,$5,390,2,$50,000,$55,390,$664,680
+Month 11,125,$6,125,2,$50,000,$56,125,$673,500
+Month 12,140,$6,860,3,$75,000,$81,860,$982,320
+
+## P&L Statement (Annual)
+Category,Year 1,Year 2,Year 3
+Revenue,$500,000,$2,500,000,$10,000,000
+COGS (Cloud & AI),$125,000,$500,000,$1,500,000
+Gross Profit,$375,000,$2,000,000,$8,500,000
+Gross Margin %,75%,80%,85%
+
+Operating Expenses:
+- R&D (Product),$200,000,$800,000,$3,000,000
+- Sales & Marketing,$150,000,$600,000,$2,500,000
+- G&A,$100,000,$300,000,$1,000,000
+Total Operating Expenses,$450,000,$1,700,000,$6,500,000
+
+Operating Income (Loss),($75,000),$300,000,$2,000,000
+Operating Margin %,-15%,12%,20%
+
+## Cash Flow Statement
+Category,Year 1,Year 2,Year 3
+Operating Cash Flow,($50,000),$400,000,$2,200,000
+Investing Cash Flow,($200,000),($300,000),($500,000)
+Financing Cash Flow,$2,000,000,$0,$0
+Net Cash Flow,$1,750,000,$100,000,$1,700,000
+Ending Cash Balance,$1,750,000,$1,850,000,$3,550,000
+
+## Key Metrics
+Metric,Year 1,Year 2,Year 3
+Customer Acquisition Cost (CAC),$2,000,$1,500,$1,000
+Customer Lifetime Value (LTV),$5,000,$6,000,$8,000
+LTV/CAC Ratio,2.5x,4.0x,8.0x
+Monthly Churn Rate,5%,3%,2%
+Net Revenue Retention,95%,110%,120%
+Burn Rate (Monthly),$50,000,$25,000,$0
+Runway (months),24,18,36
+
+## Unit Economics (Pro Plan)
+Metric,Value
+Average Revenue Per User (ARPU),$49/month
+Gross Margin,80%
+Contribution Margin,60%
+Customer Acquisition Cost (CAC),$1,500
+Customer Lifetime Value (LTV),$6,000
+Payback Period (months),6
+LTV/CAC,4x
+
+## Enterprise Deal Assumptions
+Metric,Value
+Average Contract Value (ACV),$25,000
+Sales Cycle (months),3
+Win Rate,25%
+Implementation Fee,$5,000
+Net Revenue Retention,130%

@@ -1,0 +1,27 @@
+﻿# scripts/seed/demo_projects.json
+[
+  {
+    "id": 1,
+    "name": "E-Commerce Platform",
+    "description": "Full-featured e-commerce platform with product catalog, shopping cart, and payment processing",
+    "status": "completed",
+    "batches": [1, 2, 3],
+    "created_at": "2026-05-01T00:00:00Z"
+  },
+  {
+    "id": 2,
+    "name": "Task Management App",
+    "description": "Team task management with boards, lists, cards, and real-time updates",
+    "status": "completed",
+    "batches": [4, 5],
+    "created_at": "2026-05-10T00:00:00Z"
+  },
+  {
+    "id": 3,
+    "name": "Blog Platform",
+    "description": "Multi-author blog platform with comments, categories, and SEO optimization",
+    "status": "in_progress",
+    "batches": [6],
+    "created_at": "2026-05-15T00:00:00Z"
+  }
+]

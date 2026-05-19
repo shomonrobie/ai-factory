@@ -10,13 +10,12 @@
     volumes:
       - ./backend:/app/backend
       - ./factory:/app/factory
-    command: >
-      sh -c "sleep 2 && uvicorn app.main:app --host 0.0.0.0 --port 4001 --reload"
+    command: uvicorn app.main:app --host 0.0.0.0 --port 4001 --reload
 
   frontend:
     build:
       context: .
-      dockerfile: docker/Dockerfile.frontend
+      dockerfile: docker/Dockerfile.frontend.simple
     ports:
       - "4000:80"
     depends_on:

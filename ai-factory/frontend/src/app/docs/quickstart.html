@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Quick Start - FactoryOS AI</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#F7FAFC;}
+.header{background:#1A365D;color:white;padding:16px 0;position:sticky;top:0;}
+.header .container{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;}
+.logo{font-size:24px;font-weight:bold;}
+.logo a{color:white;text-decoration:none;}
+.nav a{color:white;text-decoration:none;margin-left:20px;}
+.btn-outline{border:1px solid white;padding:8px 20px;border-radius:8px;}
+.btn-solid{background:#319795;padding:8px 20px;border-radius:8px;}
+.container{max-width:800px;margin:0 auto;padding:40px 24px;background:white;border-radius:12px;margin-top:40px;}
+pre{background:#EDF2F7;padding:15px;border-radius:8px;overflow-x:auto;margin:20px 0;}
+h1{color:#1A365D;}
+h2{color:#1A365D;margin:30px 0 15px;}
+.footer{background:#1A365D;color:white;padding:40px 0;text-align:center;margin-top:40px;}
+</style>
+</head>
+<body>
+<header class="header"><div class="container"><div class="logo"><a href="/">FactoryOS AI</a></div><nav class="nav"><a href="/#features">Features</a><a href="/#agents">Agents</a><a href="/pricing">Pricing</a><a href="/docs">Docs</a><a href="/blog">Blog</a><a href="/login" class="btn-outline">Sign In</a><a href="/signup" class="btn-solid">Get Started</a></nav></div></header>
+<div class="container"><h1>Quick Start Guide</h1><p>Get started with FactoryOS AI in 5 minutes.</p>
+<h2>Prerequisites</h2><ul><li>Docker Desktop installed</li><li>API key (sign up for free)</li><li>Basic knowledge of REST APIs</li></ul>
+<h2>Step 1: Sign Up</h2><p>Visit <a href="/signup">/signup</a> to create your free account. You'll get an API key immediately.</p>
+<h2>Step 2: Create Your First Batch</h2><pre><code>curl -X POST https://api.factoryos.ai/api/v1/batches/ \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"batch_number": 1, "prompt": "Create a REST API for product management"}'</code></pre>
+<h2>Step 3: Check Status</h2><pre><code>curl -X GET https://api.factoryos.ai/api/v1/batches/1 \
+  -H "Authorization: Bearer YOUR_API_KEY"</code></pre>
+<h2>Step 4: View Generated Code</h2><p>The batch response will include all generated files. The code is production-ready with tests, documentation, and Docker configuration.</p>
+<h2>Step 5: Deploy</h2><pre><code>cd generated_app
+docker-compose up -d</code></pre>
+<p>Your application is now running!</p>
+<h2>Next Steps</h2><ul><li><a href="/docs">Read full documentation</a></li><li><a href="/api-docs">Explore API reference</a></li><li><a href="/dashboard">View your dashboard</a></li></ul>
+</div>
+<footer class="footer"><div class="container"><p>&copy; 2026 FactoryOS AI. All rights reserved.</p></div></footer>
+</body>
+</html>

@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Reference - FactoryOS AI</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Inter',sans-serif;background:#F7FAFC;}
+        .container{max-width:1000px;margin:40px auto;padding:40px;background:white;border-radius:12px;box-shadow:0 4px 6px rgba(0,0,0,0.1);}
+        pre{background:#EDF2F7;padding:15px;border-radius:8px;overflow-x:auto;margin:20px 0;}
+        code{font-family:monospace;}
+        h1{color:#1A365D;}
+        h2{color:#1A365D;margin:30px 0 15px;}
+        .api-link{background:#EDF2F7;padding:10px;border-radius:8px;margin:10px 0;}
+        .back-btn{background:#3182CE;color:white;padding:10px 20px;border:none;border-radius:6px;cursor:pointer;text-decoration:none;display:inline-block;margin-bottom:20px;}
+    </style>
+</head>
+<body>
+<header style="background:#1A365D;color:white;padding:16px 0;position:sticky;top:0;z-index:100;">
+<div style="max-width:1280px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;">
+<div style="font-size:24px;font-weight:bold;"><a href="/" style="color:white;text-decoration:none;">FactoryOS AI</a></div>
+<nav style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;">
+<a href="/#features" style="color:white;text-decoration:none;">Features</a>
+<a href="/#agents" style="color:white;text-decoration:none;">Agents</a>
+<a href="/pricing" style="color:white;text-decoration:none;">Pricing</a>
+<a href="/docs" style="color:white;text-decoration:none;">Docs</a>
+<a href="/blog" style="color:white;text-decoration:none;">Blog</a>
+<span id="userDisplay" style="margin-left:10px;"></span>
+<a href="/logout" id="logoutBtn" style="color:white;text-decoration:none;display:none;">Logout</a>
+</nav>
+</div>
+</header>
+<script>
+const isLoggedIn = sessionStorage.getItem('admin_logged_in') === 'true';
+if (!isLoggedIn && window.location.pathname !== '/login' && window.location.pathname !== '/' && !window.location.pathname.includes('/api/')) {
+    if (!window.location.pathname.includes('/login')) {
+        window.location.href = '/login?redirect=' + encodeURIComponent(window.location.pathname);
+    }
+}
+if (isLoggedIn) {
+    document.getElementById('userDisplay').innerHTML = 'ðŸ‘¤ Admin';
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+        logoutBtn.style.display = 'inline';
+        logoutBtn.onclick = function(e) {
+            e.preventDefault();
+            sessionStorage.removeItem('admin_logged_in');
+            window.location.href = '/login';
+        };
+    }
+}
+</script>
+    <div class="container">
+        <h1>API Reference</h1>
+        <p>Complete REST API documentation for FactoryOS AI.</p>
+        
+        <div class="api-link"><strong>Interactive Documentation:</strong> <a href="http://localhost:4001/docs" target="_blank">http://localhost:4001/docs</a></div>
+        
+        <h2>Authentication</h2>
+        <pre><code>curl -X POST http://localhost:4001/api/v1/auth/token \
+  -H "Content-Type: application/json" \
+  -d '{"email":"admin@factoryos.ai","password":"admin123"}'</code></pre>
+        
+        <h2>Batches API</h2>
+        <h3>Create Batch</h3>
+        <pre><code>curl -X POST http://localhost:4001/api/v1/batches/ \
+  -H "Content-Type: application/json" \
+  -d '{"batch_number": 1, "prompt": "Create a todo app"}'</code></pre>
+        
+        <h3>List Batches</h3>
+        <pre><code>curl -X GET http://localhost:4001/api/v1/batches/</code></pre>
+        
+        <h2>Agents API</h2>
+        <h3>List Agents</h3>
+        <pre><code>curl -X GET http://localhost:4001/api/v1/agents/</code></pre>
+        
+        <h3>Generate Code</h3>
+        <pre><code>curl -X POST http://localhost:4001/api/v1/agents/generate \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "Create a REST API", "entity_name": "Product"}'</code></pre>
+        
+        <h2>Admin API</h2>
+        <h3>Get Users</h3>
+        <pre><code>curl -X GET http://localhost:4001/api/v1/admin/users</code></pre>
+        
+        <h3>Create User</h3>
+        <pre><code>curl -X POST http://localhost:4001/api/v1/admin/users \
+  -H "Content-Type: application/json" \
+  -d '{"name": "New User", "email": "user@example.com", "tier": "free"}'</code></pre>
+        
+        <h2>Orchestration API</h2>
+        <h3>Create Plan</h3>
+        <pre><code>curl -X POST http://localhost:4001/api/v1/orchestration/plan \
+  -H "Content-Type: application/json" \
+  -d '{"goal": "Build an e-commerce platform", "context": {}}'</code></pre>
+        
+        <a href="/docs" class="back-btn">â† Back to Documentation</a>
+    </div>
+<footer style="background:#1A365D;color:white;padding:40px 0;text-align:center;margin-top:60px;">
+<div style="max-width:1280px;margin:0 auto;padding:0 24px;">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;margin-bottom:40px;">
+<div><h4>Product</h4><a href="/#features" style="color:#A0AEC0;text-decoration:none;display:block;margin-bottom:10px;">Features</a><a href="/#agents" style="color:#A0AEC0;text-decoration:none;display:block;margin-bottom:10px;">Agents</a><a href="/pricing" style="color:#A0AEC0;text-decoration:none;display:block;margin-bottom:10px;">Pricing</a></div>
+<div><h4>Resources</h4><a href="/docs" style="color:#A0AEC0;text-decoration:none;display:block;margin-bottom:10px;">Documentation</a><a href="/blog" style="color:#A0AEC0;text-decoration:none;display:block;margin-bottom:10px;">Blog</a><a href="/api-docs" style="color:#A0AEC0;text-decoration:none;display:block;margin-bottom:10px;">API Reference</a></div>
+<div><h4>Company</h4><a href="/about" style="color:#A0AEC0;text-decoration:none;display:block;margin-bottom:10px;">About Us</a><a href="/contact" style="color:#A0AEC0;text-decoration:none;display:block;margin-bottom:10px;">Contact</a></div>
+<div><h4>Legal</h4><a href="/privacy" style="color:#A0AEC0;text-decoration:none;display:block;margin-bottom:10px;">Privacy Policy</a><a href="/terms" style="color:#A0AEC0;text-decoration:none;display:block;margin-bottom:10px;">Terms of Service</a></div>
+</div>
+<div style="border-top:1px solid #2D3748;padding-top:40px;color:#A0AEC0;"><p>&copy; 2026 FactoryOS AI. All rights reserved. The Autonomous AI Software Engineering Platform.</p></div>
+</div>
+</footer>
+</body>
+</html>

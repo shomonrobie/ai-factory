@@ -1,0 +1,39 @@
+﻿# data/seed/testimonials.json
+[
+  {
+    "id": 1,
+    "author": "Sarah Chen",
+    "title": "CTO at TechStart",
+    "content": "FactoryOS AI reduced our MVP development time from 3 months to 1 week. The multi-agent system is incredibly smart and the generated code is production-ready.",
+    "rating": 5,
+    "avatar": "https://randomuser.me/api/portraits/women/1.jpg",
+    "date": "2026-04-15"
+  },
+  {
+    "id": 2,
+    "author": "Michael Rodriguez",
+    "title": "Lead Developer at DevShop",
+    "content": "The self-improving feedback loop is a game-changer. Our code quality improved by 40% after using FactoryOS AI for just one month.",
+    "rating": 5,
+    "avatar": "https://randomuser.me/api/portraits/men/2.jpg",
+    "date": "2026-04-20"
+  },
+  {
+    "id": 3,
+    "author": "Emily Watson",
+    "title": "Founder at SaaSify",
+    "content": "We built our entire platform using FactoryOS AI. The CI/CD pipeline automation saved us hundreds of engineering hours.",
+    "rating": 5,
+    "avatar": "https://randomuser.me/api/portraits/women/3.jpg",
+    "date": "2026-05-01"
+  },
+  {
+    "id": 4,
+    "author": "David Kim",
+    "title": "Engineering Manager at EnterpriseCo",
+    "content": "Enterprise features like SSO and on-premise deployment made adoption seamless. The audit logs are comprehensive.",
+    "rating": 5,
+    "avatar": "https://randomuser.me/api/portraits/men/4.jpg",
+    "date": "2026-05-10"
+  }
+]

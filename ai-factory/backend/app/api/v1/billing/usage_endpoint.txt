@@ -1,0 +1,11 @@
+﻿# Add to backend/app/api/v1/billing/webhooks.py - add this endpoint
+
+@router.get("/usage/current_user")
+async def get_current_user_usage(user_id: str = "current_user"):
+    monthly = usage_meter.get_monthly_usage(user_id)
+    history = usage_meter.get_usage_history(user_id)
+    return {
+        "current_month": monthly,
+        "history": history,
+        "tier": feature_gate.get_user_tier(user_id).value
+    }

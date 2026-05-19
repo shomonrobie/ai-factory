@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Documentation - FactoryOS AI</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;color:#2D3748;background:#F7FAFC;}
+.header{background:#1A365D;color:white;padding:16px 0;position:sticky;top:0;}
+.header .container{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+.logo{font-size:24px;font-weight:bold;}
+.logo a{color:white;text-decoration:none;}
+.nav{display:flex;gap:20px;align-items:center;flex-wrap:wrap;}
+.nav a{color:white;text-decoration:none;}
+.btn-outline{border:1px solid white;padding:8px 20px;border-radius:8px;}
+.btn-solid{background:#319795;padding:8px 20px;border-radius:8px;}
+.container{max-width:1280px;margin:0 auto;padding:0 24px;}
+.docs-layout{display:grid;grid-template-columns:280px 1fr;gap:40px;padding:40px 0;}
+.sidebar{position:sticky;top:80px;}
+.sidebar h3{color:#1A365D;margin:20px 0 10px;}
+.sidebar ul{list-style:none;}
+.sidebar li{margin-bottom:8px;}
+.sidebar a{color:#4A5568;text-decoration:none;}
+.sidebar a:hover{color:#3182CE;}
+.content h1{color:#1A365D;margin-bottom:20px;}
+.content h2{color:#1A365D;margin:30px 0 15px;}
+.content pre{background:#EDF2F7;padding:15px;border-radius:8px;overflow-x:auto;margin:20px 0;}
+.content code{background:#EDF2F7;padding:2px 6px;border-radius:4px;font-family:monospace;}
+.footer{background:#1A365D;color:white;padding:40px 0;text-align:center;margin-top:40px;}
+@media (max-width:768px){.docs-layout{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<header class="header"><div class="container"><div class="logo"><a href="/">FactoryOS AI</a></div><nav class="nav"><a href="/#features">Features</a><a href="/#agents">Agents</a><a href="/pricing">Pricing</a><a href="/docs">Docs</a><a href="/blog">Blog</a><a href="/login" class="btn-outline">Sign In</a><a href="/signup" class="btn-solid">Get Started</a></nav></div></header>
+<div class="container"><div class="docs-layout">
+<div class="sidebar"><h3>Getting Started</h3><ul><li><a href="/docs">Welcome</a></li><li><a href="/docs/quickstart">Quick Start Guide</a></li><li><a href="/docs/installation">Installation</a></li><li><a href="/docs/first-batch">Your First Batch</a></li></ul>
+<h3>API Reference</h3><ul><li><a href="/api-docs">API Documentation</a></li><li><a href="/docs/api/batches">Batches API</a></li><li><a href="/docs/api/agents">Agents API</a></li><li><a href="/docs/api/orchestration">Orchestration API</a></li></ul>
+<h3>Guides</h3><ul><li><a href="/docs/guides/agents">Using AI Agents</a></li><li><a href="/docs/guides/orchestration">Multi-Agent Orchestration</a></li><li><a href="/docs/guides/evolution">Self-Improving Evolution</a></li><li><a href="/docs/guides/cicd">CI/CD Pipeline</a></li></ul>
+
+<div class="content"><h1>Welcome to FactoryOS AI</h1><p>FactoryOS AI is an autonomous AI-powered software engineering platform that uses 8 specialized agents to build production-ready software.</p>
+<h2>Quick Start</h2><pre><code># Install FactoryOS AI
+docker pull factoryos/backend:latest
+docker pull factoryos/frontend:latest
+
+# Run with Docker Compose
+curl -O https://factoryos.ai/docker-compose.yml
+docker-compose up -d
+
+# Create your first batch
+curl -X POST https://api.factoryos.ai/api/v1/batches/ \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"batch_number": 1, "prompt": "Create a todo app"}'</code></pre>
+<h2>Key Features</h2><ul><li><strong>8 Specialized AI Agents</strong> - Architect, Backend, Frontend, Database, QA, Security, DevOps, Code Generator</li><li><strong>Multi-Agent Orchestration</strong> - Agents work together to plan and execute complex tasks</li><li><strong>Self-Improving Evolution</strong> - Code reviews itself and improves through feedback loops</li><li><strong>CI/CD Automation</strong> - Automated build, test, security, and deploy pipelines</li></ul>
+<h2>Next Steps</h2><ul><li><a href="/docs/quickstart">Read the Quick Start Guide</a></li><li><a href="/api-docs">Explore the API Reference</a></li><li><a href="/signup">Start Building for Free</a></li></ul></div>
+</div></div>
+<footer class="footer"><div class="container"><p>&copy; 2026 FactoryOS AI. All rights reserved.</p></div></footer>
+</body>
+</html>

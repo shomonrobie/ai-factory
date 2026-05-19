@@ -1,0 +1,67 @@
+﻿# scripts/seed/demo_batches.json
+[
+  {
+    "batch_number": 1,
+    "project_id": 1,
+    "prompt": "Create a product catalog API with CRUD operations, search, and filtering",
+    "status": "completed",
+    "result": {
+      "generated_code": [
+        "app/models/product.py",
+        "app/api/products.py",
+        "app/services/product_service.py",
+        "tests/test_products.py"
+      ],
+      "validation_score": 92,
+      "deployment_url": "https://demo.factoryos.ai/projects/1"
+    },
+    "created_at": "2026-05-01T10:00:00Z"
+  },
+  {
+    "batch_number": 2,
+    "project_id": 1,
+    "prompt": "Add shopping cart functionality with session management and checkout flow",
+    "status": "completed",
+    "result": {
+      "generated_code": [
+        "app/models/cart.py",
+        "app/api/cart.py",
+        "app/services/cart_service.py"
+      ],
+      "validation_score": 88,
+      "deployment_url": "https://demo.factoryos.ai/projects/1"
+    },
+    "created_at": "2026-05-03T14:30:00Z"
+  },
+  {
+    "batch_number": 3,
+    "project_id": 1,
+    "prompt": "Integrate Stripe payment processing with webhooks for payment confirmation",
+    "status": "completed",
+    "result": {
+      "generated_code": [
+        "app/payment/stripe_integration.py",
+        "app/api/webhooks.py"
+      ],
+      "validation_score": 85,
+      "deployment_url": "https://demo.factoryos.ai/projects/1"
+    },
+    "created_at": "2026-05-05T09:15:00Z"
+  },
+  {
+    "batch_number": 4,
+    "project_id": 2,
+    "prompt": "Create a task board with drag-and-drop columns for To Do, In Progress, and Done",
+    "status": "completed",
+    "result": {
+      "generated_code": [
+        "frontend/components/Board.jsx",
+        "frontend/components/Card.jsx",
+        "backend/api/tasks.py"
+      ],
+      "validation_score": 90,
+      "deployment_url": "https://demo.factoryos.ai/projects/2"
+    },
+    "created_at": "2026-05-11T11:00:00Z"
+  }
+]

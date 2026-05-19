@@ -22,10 +22,6 @@ app.add_middleware(
 
 app.include_router(api_v1_router, prefix="/api/v1")
 
-@app.get("/health")
-async def health_check():
-    return {"status": "healthy", "version": "1.5.0"}
-
 @app.get("/")
 async def root():
     return {

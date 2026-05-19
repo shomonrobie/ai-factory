@@ -1,0 +1,33 @@
+﻿<header style="background:#1A365D;color:white;padding:16px 0;position:sticky;top:0;z-index:100;">
+<div style="max-width:1280px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;">
+<div style="font-size:24px;font-weight:bold;"><a href="/" style="color:white;text-decoration:none;">FactoryOS AI</a></div>
+<nav style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;">
+<a href="/#features" style="color:white;text-decoration:none;">Features</a>
+<a href="/#agents" style="color:white;text-decoration:none;">Agents</a>
+<a href="/pricing" style="color:white;text-decoration:none;">Pricing</a>
+<a href="/docs" style="color:white;text-decoration:none;">Docs</a>
+<a href="/blog" style="color:white;text-decoration:none;">Blog</a>
+<a href="/logout" id="logoutBtn" style="color:white;text-decoration:none;display:none;">Logout</a>
+</nav>
+</div>
+</header>
+<script>
+const isLoggedIn = sessionStorage.getItem('admin_logged_in') === 'true';
+if (!isLoggedIn && window.location.pathname !== '/login' && window.location.pathname !== '/' && !window.location.pathname.includes('/api/')) {
+    if (!window.location.pathname.includes('/login')) {
+        window.location.href = '/login?redirect=' + encodeURIComponent(window.location.pathname);
+    }
+}
+if (isLoggedIn) {
+    document.getElementById('userDisplay').innerHTML = 'ðŸ‘¤ Admin';
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+        logoutBtn.style.display = 'inline';
+        logoutBtn.onclick = function(e) {
+            e.preventDefault();
+            sessionStorage.removeItem('admin_logged_in');
+            window.location.href = '/login';
+        };
+    }
+}
+</script>
